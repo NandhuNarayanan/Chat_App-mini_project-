@@ -1,0 +1,325 @@
+@mixin  mobile {
+    @media screen and (max-width:480px) {
+        @content
+    }
+}
+
+@mixin  tablet {
+    @media screen and (max-width:768px) {
+        @content
+    }
+}
+
+@mixin  laptop {
+    @media screen and (max-width:1200px) {
+        @content
+    }
+}
+
+
+
+.formContainer{
+background-color: rgba(90, 35, 106, 0.924);
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+.formWrapper{
+    background-color: rgb(255, 255, 255);
+    padding: 20px 60px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+
+
+    .logo{
+        color: rgb(129, 51, 157);
+        font-weight: bold;
+        font-size: 25px;
+        
+    }
+    .title{
+        color: rgb(91, 95, 99);
+        font-size: 19px;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        
+
+        input{
+            padding: 25px;
+            border: 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.66);
+            &::placeholder{
+                color: rgb(175, 175, 175);
+            }
+        }
+        .img{
+            width: 35px;
+            height: 35px;
+        }
+
+
+        button{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        label{
+            display: flex;
+            align-items: center;
+        }
+    }
+    p{
+        color: #5d5b8d;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}
+}
+
+
+.home{
+
+    background-color:  rgba(90, 35, 106, 0.924);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container{
+        border: 1px solid white;
+        border-radius: 10px;
+        width: 65%;
+        height: 80%;
+        display: flex ;
+        overflow: hidden;
+        @include tablet{
+           width: 90%;
+        }
+
+        .sidebar{
+            flex: 1;
+            background-color: rgb(91, 95, 99);
+            position: relative;
+            .navbar{
+                display: flex;
+                align-items: center;
+                background-color: rgb(25, 81, 127);
+                height: 50px;
+                padding: 10px;
+                justify-content: space-between;
+                color: #ddddf7;
+
+                .logo{
+                    font-weight: bold;
+                    @include tablet{
+                        display: none;
+                    }
+                }
+                .user{
+                    display: flex;
+                    gap: 10px;
+
+                    img{
+                        background-color: #ddddf7;
+                        height: 24px;
+                        width: 24px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    button{
+                        background-color: #5d5b8d;
+                        color: #ddddf7;
+                        font-size: 10px;
+                        border: none;
+                        cursor: pointer;
+                        @include tablet{
+                            position: absolute;
+                            bottom: 10px;
+                        }
+                    }
+                }
+                
+            }
+            .search{
+                border-bottom: 1px solid gray;
+
+                .searchForm{
+                    input{
+                        background-color: transparent;
+                        border: none;
+                        color: white;
+                        outline: none;
+
+                        &::placeholder{
+                            color: lightgray;
+                        }
+                    }
+                }
+            }
+            .userChat{
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: #2f2f2f;
+                }
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                .userChatInfo{
+                    span{
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                    p{
+                       font-size: 14px;
+                       color: lightgray; 
+                    }
+                }
+
+            }
+        }
+        .chat{
+            flex: 2;
+
+            .chatInfo{
+                height: 50px;
+                background-color: #5d5b8d;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                color: lightgrey;
+
+            }
+            .chatIcons{
+                display: flex;
+                gap: 10px;
+
+                img{
+                    height: 24px;
+                    cursor: pointer;
+                }
+            }
+
+            .messages{
+                background-color: #ddddf7;
+                padding: 10px;
+                height: calc(100% - 160px);
+                overflow: scroll;
+
+                .message{
+                    display: flex;
+                    gap: 20px;
+
+                    .messageInfo{
+                        display: flex;
+                        flex-direction: column;
+                        color: gray;
+                        font-weight: 300;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            background-repeat: 50%;
+                            object-fit: cover;
+                        }
+
+                    }
+                    .messageContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        p{
+                            background-color: white;
+                            padding: 10px 20px;
+                            border-radius: 0px 10px 10px 10px;
+                            max-width: max-content;
+                        }
+                        img{
+                            width: 50%;
+                        }
+                    }
+                    &.owner{
+                        flex-direction: row-reverse;
+
+                        .messageContent{
+                            align-items: flex-end;
+                            
+                            p{
+                                background-color: #5d5b8d;
+                                color: white;
+                                border-radius: 10px 0px 10px 10px;
+                                
+                                
+                                
+                            }
+                        }
+                        }
+                }
+
+            }
+
+           
+            .input{
+                height: 50px;
+                background-color: white;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                input{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    color: #2f2d52;
+                    font-size: 18px;
+
+                    &::placeholder{
+                        color: lightgrey;
+                    }
+                }
+                .send{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img{
+                        height: 24px;
+                        cursor: pointer;
+                    }
+                    button{
+                        border: none;
+                        padding: 10px 15px;
+                        color: white;
+                        background-color: #2f2f2f;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
